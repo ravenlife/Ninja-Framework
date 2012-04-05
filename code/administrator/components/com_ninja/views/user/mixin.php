@@ -61,12 +61,9 @@ class ComNinjaViewUserMixin extends KMixinAbstract
 		}
 		
 		$url = KRequest::url();
-		$uri = KFactory::get('lib.koowa.http.uri');
-		$uri->path = $url->path;
-		$uri->query = $url->getQuery(1);
 		
 		$params->def( 'pageclass_sfx', 			'' );
-		$params->def( 'login', 					$uri );
+		$params->def( 'login', 					$url );
 		$params->def( 'description_login', 		1 );
 		$params->def( 'description_logout', 		1 );
 		$params->def( 'description_login_text', 	JText::_( 'LOGIN_DESCRIPTION' ) );
