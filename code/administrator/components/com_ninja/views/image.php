@@ -76,7 +76,7 @@ class NinjaViewImage extends KViewFile
 		$cache .= '/'.$item->id.'/'.$identifier->name.'&'.urldecode(http_build_query($image->actions)).'.'.$image->ext;
 		if(!JFile::exists($cache)) {
 			//To avoid "image directory unwritable" messages
-			JFile::write($cache, '');
+			JFile::write($cache);
 			
 			$image->save($cache);
 			JPath::setPermissions($cache);
