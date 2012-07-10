@@ -1,7 +1,6 @@
 <?php
 /**
- * @version		$Id: behavior.php 4479 2012-02-10 01:53:06Z johanjanssens $
- * @category	Koowa
+ * @version		$Id: behavior.php 4622 2012-05-03 03:31:11Z johanjanssens $
  * @package		Koowa_Template
  * @subpackage	Helper
  * @copyright	Copyright (C) 2007 - 2012 Johan Janssens. All rights reserved.
@@ -13,7 +12,6 @@
  * Template Behavior Helper
  *
  * @author		Johan Janssens <johan@nooku.org>
- * @category	Koowa
  * @package		Koowa_Template
  * @subpackage	Helper
  */

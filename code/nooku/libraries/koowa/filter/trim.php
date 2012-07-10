@@ -1,6 +1,6 @@
 <?php
 /**
-* @version		$Id: trim.php 4477 2012-02-10 01:06:38Z johanjanssens $
+* @version		$Id: trim.php 4622 2012-05-03 03:31:11Z johanjanssens $
 * @category		Koowa
 * @package      Koowa_Filter
 * @copyright    Copyright (C) 2007 - 2012 Johan Janssens. All rights reserved.
@@ -12,7 +12,6 @@
  * Trim filter.
  *
  * @author		Johan Janssens <johan@nooku.org>
- * @category	Koowa
  * @package     Koowa_Filter
  */
 class KFilterTrim extends KFilterAbstract
@@ -35,13 +34,13 @@ class KFilterTrim extends KFilterAbstract
     public function __construct(KConfig $config)
     {
         parent::__construct($config);
-        
+
         // List of user-defined tags
         if(isset($config->char_list)) {
             $this->_charList = $config->char_list;
         }
     }
-    
+
     /**
      * Returns the charList option
      *
@@ -74,10 +73,10 @@ class KFilterTrim extends KFilterAbstract
     {
         return (is_string($value));
     }
-    
+
     /**
      * Sanitize a value
-     * 
+     *
      * Returns the variable with characters stripped from the beginning and end
      *
      * @param   mixed   Value to be sanitized

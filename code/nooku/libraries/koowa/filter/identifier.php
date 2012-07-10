@@ -1,6 +1,6 @@
 <?php
 /**
-* @version		$Id: identifier.php 4477 2012-02-10 01:06:38Z johanjanssens $
+* @version		$Id: identifier.php 4622 2012-05-03 03:31:11Z johanjanssens $
 * @category		Koowa
 * @package      Koowa_Filter
 * @copyright    Copyright (C) 2007 - 2012 Johan Janssens. All rights reserved.
@@ -14,7 +14,6 @@
  * Validates identifiers in the form of [application::]type.package.[.path].name
  *
  * @author		Johan Janssens <johan@nooku.org>
- * @category	Koowa
  * @package     Koowa_Filter
  */
 class KFilterIdentifier extends KFilterAbstract

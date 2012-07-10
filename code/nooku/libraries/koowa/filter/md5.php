@@ -1,7 +1,6 @@
 <?php
 /**
-* @version		$Id: md5.php 4477 2012-02-10 01:06:38Z johanjanssens $
-* @category		Koowa
+* @version		$Id: md5.php 4622 2012-05-03 03:31:11Z johanjanssens $
 * @package      Koowa_Filter
 * @copyright    Copyright (C) 2007 - 2012 Johan Janssens. All rights reserved.
 * @license      GNU GPLv3 <http://www.gnu.org/licenses/gpl.html>
@@ -14,7 +13,6 @@
  * Validates or sanitizes an md5 hash (32 chars [a-f0-9])
  *
  * @author      Johan Janssens <johan@nooku.org>
- * @category    Koowa
  * @package     Koowa_Filter
  */
 class KFilterMd5 extends KFilterAbstract
@@ -31,7 +29,7 @@ class KFilterMd5 extends KFilterAbstract
         $pattern = '/^[a-f0-9]{32}$/';
         return (is_string($value) && preg_match($pattern, $value) == 1);
     }
-    
+
     /**
      * Sanitize a valaue
      *

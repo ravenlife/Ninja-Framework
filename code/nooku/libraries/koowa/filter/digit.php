@@ -1,7 +1,6 @@
 <?php
 /**
-* @version		$Id: digit.php 4477 2012-02-10 01:06:38Z johanjanssens $
-* @category		Koowa
+* @version		$Id: digit.php 4622 2012-05-03 03:31:11Z johanjanssens $
 * @package      Koowa_Filter
 * @copyright    Copyright (C) 2007 - 2012 Johan Janssens. All rights reserved.
 * @license      GNU GPLv3 <http://www.gnu.org/licenses/gpl.html>
@@ -10,11 +9,10 @@
 
 /**
  * Digit filter
- * 
+ *
  * Checks if all of the characters in the provided string are numerical
  *
  * @author      Johan Janssens <johan@nooku.org>
- * @category    Koowa
  * @package     Koowa_Filter
  */
 class KFilterDigit extends KFilterAbstract
@@ -29,7 +27,7 @@ class KFilterDigit extends KFilterAbstract
     {
         return empty($value) || ctype_digit($value);
     }
-    
+
     /**
      * Sanitize a value
      *

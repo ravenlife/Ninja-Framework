@@ -1,7 +1,6 @@
 <?php
 /**
- * @version     $Id: default.php 4478 2012-02-10 01:50:39Z johanjanssens $
- * @category	Nooku
+ * @version     $Id: default.php 4622 2012-05-03 03:31:11Z johanjanssens $
  * @package     Nooku_Plugins
  * @subpackage  Koowa
  * @copyright   Copyright (C) 2007 - 2012 Johan Janssens. All rights reserved.
@@ -11,20 +10,20 @@
 
 /**
  * Default Koowa plugin
- * 
- * Koowa plugins can handle a number of events that are dynamically generated. The following 
+ *
+ * Koowa plugins can handle a number of events that are dynamically generated. The following
  * is a list of available events. This list is not meant to be exclusive.
- * 
+ *
  * onControllerBefore[Action]
  * onControllerAfter[Action]
  * where [Action] is Browse, Read, Edit, Add, Delete or any custom controller action
- * 
+ *
  * onDatabaseBefore[Action]
  * onDatabaseAfter[Action]
  * where [Action] is Select, Insert, Update or Delete
- * 
+ *
  * You can create your own Koowa plugins very easily :
- * 
+ *
  * <code>
  * <?php
  *  class plgKoowaFoo extends plgKoowaDefault
@@ -33,50 +32,48 @@
  *      {
  *          //The caller is a reference to the object that is triggering this event
  *          $caller = $context->caller;
- * 
- *          //The result is the actual result of the event, if this is an after event 
+ *
+ *          //The result is the actual result of the event, if this is an after event
  *          //the result will contain the result of the action.
  *          $result = $context->result;
- * 
+ *
  *          //The context object can also contain a number of custom properties
  *          print_r($context);
- *      }   
- * }    
-}
+ *      }
+ * }
  * </code>
  *
  * @author      Johan Janssens <johan@nooku.org>
- * @category    Koowa
- * @package     Koowa_Plugins
+ * @package     Nooku_Plugins
  * @subpackage  Koowa
  */
 abstract class PlgKoowaDefault extends KEventListener
-{   
-   /**
+{
+	/**
 	 * A JRegistry object holding the parameters for the plugin
 	 *
 	 * @var	A JRegistry object
 	 */
 	protected $_params	= null;
 
-    /**
-     * The name of the plugin
-     *
-     * @var     string
-     */
-    protected $_name = null;
+	/**
+	 * The name of the plugin
+	 *
+	 * @var		string
+	 */
+	protected $_name = null;
 
-    /**
-     * The plugin type
-     *
-     * @var     string
-     */
-    protected $_type = null;
-    
-    /**
-     * Constructor
-     */
-function __construct($dispatcher, $config = array())
+	/**
+	 * The plugin type
+	 *
+	 * @var		string
+	 */
+	protected $_type = null;
+
+	/**
+	 * Constructor
+	 */
+	function __construct($dispatcher, $config = array())
 	{
 		if (isset($config['params']))
 		{
@@ -95,29 +92,32 @@ function __construct($dispatcher, $config = array())
 		if ( isset( $config['type'] ) ) {
 			$this->_type = $config['type'];
 		}
-		
-		//Force the identifier to NULL for now
-		$config['identifier'] = null;
-		
-		//Set the dispatcher
+
+		//Inject the identifier
+		$config['service_identifier'] = KService::getIdentifier('plg:koowa.'.$this->_name);
+
+		//Inject the service container
+		$config['service_container'] = KService::getInstance();
+
+		//Inject the dispatcher
 		$config['dispatcher'] = $dispatcher;
 
 		parent::__construct(new KConfig($config));
 	}
-    
-    /**
-     * Loads the plugin language file
-     *
-     * @param   string  $extension  The extension for which a language file should be loaded
-     * @param   string  $basePath   The basepath to use
-     * @return  boolean True, if the file has successfully loaded.
-     */
-    public function loadLanguage($extension = '', $basePath = JPATH_BASE)
-    {
-        if(empty($extension)) {
-            $extension = 'plg_'.$this->_type.'_'.$this->_name;
-        }
 
-        return JFactory::getLanguage()->load( strtolower($extension), $basePath);
-    }
+	/**
+	 * Loads the plugin language file
+	 *
+	 * @param	string 	$extension 	The extension for which a language file should be loaded
+	 * @param	string 	$basePath  	The basepath to use
+	 * @return	boolean	True, if the file has successfully loaded.
+	 */
+	public function loadLanguage($extension = '', $basePath = JPATH_BASE)
+	{
+		if(empty($extension)) {
+			$extension = 'plg_'.$this->_type.'_'.$this->_name;
+		}
+
+		return JFactory::getLanguage()->load( strtolower($extension), $basePath);
+	}
 }

@@ -1,7 +1,6 @@
 <?php
 /**
- * @version		$Id: handlable.php 4477 2012-02-10 01:06:38Z johanjanssens $
- * @category	Koowa
+ * @version		$Id: handlable.php 4622 2012-05-03 03:31:11Z johanjanssens $
  * @package		Koowa_Object
  * @copyright	Copyright (C) 2007 - 2012 Johan Janssens. All rights reserved.
  * @license		GNU GPLv3 <http://www.gnu.org/licenses/gpl.html>
@@ -19,13 +18,13 @@ interface KObjectHandlable
 {
 	/**
 	 * Get the object handle
-	 * 
-	 * This function returns an unique identifier for the object. This id can be used as 
+	 *
+	 * This function returns an unique identifier for the object. This id can be used as
 	 * a hash key for storing objects or for identifying an object
-	 * 
+	 *
 	 * Override this function to implement implement dynamic commands. If you don't want
 	 * the command to be enqueued in a chain return NULL instead of a valid handle.
-	 * 
+	 *
 	 * @return string A string that is unique, or NULL
 	 */
 	public function getHandle();

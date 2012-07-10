@@ -1,7 +1,6 @@
 <?php
 /**
-* @version      $Id: script.php 4477 2012-02-10 01:06:38Z johanjanssens $
-* @category		Koowa
+* @version      $Id: script.php 4622 2012-05-03 03:31:11Z johanjanssens $
 * @package      Koowa_Template
 * @subpackage	Filter
 * @copyright    Copyright (C) 2007 - 2012 Johan Janssens. All rights reserved.
@@ -13,7 +12,6 @@
  * Template filter to parse script tags
  *
  * @author		Johan Janssens <johan@nooku.org>
- * @category	Koowa
  * @package     Koowa_Template
  * @subpackage	Filter
  */
@@ -35,8 +33,7 @@ class KTemplateFilterScript extends KTemplateFilterAbstract implements KTemplate
 
         parent::_initialize($config);
     }
-	
-	
+
 	/**
 	 * Find any <script src="" /> or <script></script> elements and render them
 	 *

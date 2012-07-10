@@ -1,9 +1,8 @@
 <?php
 /**
- * @version     $Id: command.php 4477 2012-02-10 01:06:38Z johanjanssens $
- * @category	Koowa
+ * @version     $Id: command.php 4622 2012-05-03 03:31:11Z johanjanssens $
  * @package     Koowa_Controller
- * @subpackage 	Toolba
+ * @subpackage 	Toolbar
  * @copyright   Copyright (C) 2007 - 2012 Johan Janssens. All rights reserved.
  * @license     GNU GPLv3 <http://www.gnu.org/licenses/gpl.html>
  * @link        http://www.nooku.org
@@ -13,7 +12,6 @@
  * Controller Toolbar Command Class
  *
  * @author      Johan Janssens <johan@nooku.org>
- * @category    Koowa
  * @package     Koowa_Controller
  * @subpackage 	Toolbar
  */
@@ -25,7 +23,7 @@ class KControllerToolbarCommand extends KConfig
      * @var string
      */
     protected $_name;
-    
+
     /**
      * Constructor.
      *
@@ -33,27 +31,27 @@ class KControllerToolbarCommand extends KConfig
      * @param   array|KConfig 	An associative array of configuration settings or a KConfig instance.
      */
     public function __construct( $name, $config = array() )
-    { 
+    {
         parent::__construct($config);
-        
+
         $this->append(array(
             'icon'       => 'icon-32-'.$name,
             'id'         => $name,
             'label'      => ucfirst($name),
             'disabled'   => false,
-            'title'		 => '', 
+            'title'		 => '',
             'attribs'    => array(
                 'class'        => array(),
             )
         ));
-        
+
         //Set the command name
         $this->_name = $name;
-    } 
-    
+    }
+
     /**
      * Get the command name
-     * 
+     *
      * @return string	The command name
      */
     public function getName()

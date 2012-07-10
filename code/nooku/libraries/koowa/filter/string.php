@@ -1,6 +1,6 @@
 <?php
 /**
-* @version		$Id: string.php 4477 2012-02-10 01:06:38Z johanjanssens $
+* @version		$Id: string.php 4622 2012-05-03 03:31:11Z johanjanssens $
 * @category		Koowa
 * @package      Koowa_Filter
 * @copyright    Copyright (C) 2007 - 2012 Johan Janssens. All rights reserved.
@@ -12,7 +12,6 @@
  * String filter
  *
  * @author		Johan Janssens <johan@nooku.org>
- * @category	Koowa
  * @package     Koowa_Filter
  */
 class KFilterString extends KFilterAbstract
@@ -28,7 +27,7 @@ class KFilterString extends KFilterAbstract
 		$value = trim($value);
 		return (is_string($value) && ($value === filter_var($value, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES)));
 	}
-	
+
 	/**
 	 * Sanitize a value
 	 *

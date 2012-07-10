@@ -1,7 +1,6 @@
 <?php
 /**
- * @version		$Id: default.php 4477 2012-02-10 01:06:38Z johanjanssens $
- * @category	Koowa
+ * @version		$Id: default.php 4622 2012-05-03 03:31:11Z johanjanssens $
  * @package     Koowa_Database
  * @subpackage  Table
  * @copyright	Copyright (C) 2007 - 2012 Johan Janssens. All rights reserved.
@@ -13,7 +12,6 @@
  * Default Database Table Class
  *
  * @author		Johan Janssens <johan@nooku.org>
- * @category	Koowa
  * @package     Koowa_Database
  * @subpackage  Table
  */
@@ -36,7 +34,7 @@ class KDatabaseTableDefault extends KDatabaseTableAbstract implements KServiceIn
             $instance  = new $classname($config);
             $container->set($config->service_identifier, $instance);
         }
-        
+
         return $container->get($config->service_identifier);
     }
 }

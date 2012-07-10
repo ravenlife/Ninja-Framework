@@ -1,6 +1,6 @@
 <?php
 /**
-* @version      $Id: interface.php 4477 2012-02-10 01:06:38Z johanjanssens $
+* @version      $Id: interface.php 4622 2012-05-03 03:31:11Z johanjanssens $
 * @category		Koowa
 * @package      Koowa_Template
 * @subpackage	Filter
@@ -13,9 +13,8 @@
  * Template filter interface
  *
  * @author		Johan Janssens <johan@nooku.org>
- * @category	Koowa
  * @package     Koowa_Template
- * @subpackage	Filter 
+ * @subpackage	Filter
  */
 interface KTemplateFilterInterface  extends KCommandInterface
 {

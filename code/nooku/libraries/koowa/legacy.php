@@ -1,7 +1,6 @@
 <?php
 /**
-* @version		$Id: legacy.php 4477 2012-02-10 01:06:38Z johanjanssens $
-* @category		Koowa
+* @version		$Id: legacy.php 4622 2012-05-03 03:31:11Z johanjanssens $
 * @copyright    Copyright (C) 2007 - 2012 Johan Janssens. All rights reserved.
 * @license      GNU GPLv3 <http://www.gnu.org/licenses/gpl.html>
 * @link         http://www.nooku.org
@@ -18,7 +17,7 @@ if(false === function_exists('lcfirst'))
      * @param string $str
      * @return string the resulting string.
      */
-    function lcfirst( $str ) 
+    function lcfirst( $str )
     {
         $str[0] = strtolower($str[0]);
         return (string)$str;
@@ -28,7 +27,7 @@ if(false === function_exists('lcfirst'))
 /**
  * APC 3.1.4 compatibility
  */
-if(extension_loaded('apc') && !function_exists('apc_exists')) 
+if(extension_loaded('apc') && !function_exists('apc_exists'))
 {
     /**
      * Check if an APC key exists
@@ -41,5 +40,5 @@ if(extension_loaded('apc') && !function_exists('apc_exists'))
 		$r;
 		apc_fetch($keys,$r);
 		return $r;
-    }   
+    }
 }
