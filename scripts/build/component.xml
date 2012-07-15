@@ -49,12 +49,6 @@
 		<copy todir="${build.tmpdir}/nooku">
 			<fileset dir="${build.tmpdir}/napi/nooku" />
 		</copy>
-		<!-- com_extensions got renamed to com_koowa at some point, we need to support both -->
-		<property name="nooku.installer" value="com_koowa" />
-		<available file="${build.tmpdir}/nooku/administrator/components/com_extensions/install" type="dir" property="nooku.installer" value="com_extensions" />
-		<copy todir="${build.tmpdir}/nooku/install" haltonerror="false">
-			<fileset dir="${build.tmpdir}/nooku/administrator/components/${nooku.installer}/install/" />
-		</copy>
 		<delete dir="${build.tmpdir}/napi/nooku" includeemptydirs="true" />
 		
 		<mkdir dir="${build.tmpdir}/packages" />

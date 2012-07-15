@@ -29,49 +29,6 @@ $ver	= $ver->getShortVersion();
 $ver	= explode('.', $ver);
 $ver	= $ver[0].'.'.$ver[1];
 
-
-$public = "'".addslashes(JText::_('COM_NINJA_WHOOPS_SOMETHING_WENT_TERRIBLY_WRONG'))."'";
-$notify = create_function('$condition, $confidential, $public = '.$public, '
-	if($condition) {
-		JError::raiseWarning(500, $confidential);
-	} else {
-		JError::raiseWarning(500, $public);
-	}
-');
-
-
-//Batch of system critical checks that can only be fixed on the server.
-if(!version_compare($db->getVersion(), '5.0.41', '>=')) {
-	$message	= JText::_('%s does not support MySQL server %s. The minimum requirement is MySQL server 5.0.41 or later.');
-	$message	= sprintf($message, $extension_name, $db->getVersion());
-	$condition	= $user->authorize( 'com_config', 'manage' );
-	return $notify($condition, $message);
-}
-if(!version_compare(phpversion(), '5.2', '>=')) {
-	$message	= JText::_('%s does not support PHP %s. The minimum requirement is PHP 5.2 or later.');
-	$message	= sprintf($message, $extension_name, phpversion());
-	$condition	= $user->authorize( 'com_config', 'manage' );
-	return $notify($condition, $message);
-}
-if(!class_exists('mysqli')) {
-	$message	= JText::_('%s needs the MySQLi (MySQL improved) PHP extension enabled in order to connect with your MySQL database server. MySQLi gives access to security and performance features in MySQL server 4.1 and higher.');
-	$message	= sprintf($message, $extension_name);
-	$condition	= $user->authorize( 'com_config', 'manage' );
-	return $notify($condition, $message);
-}
-
-if(version_compare('5.3', phpversion(), '<=') && extension_loaded('ionCube Loader')) {
-
-	if(ioncube_loader_iversion() < 40002) {
-		$message	= JText::_('Your server is affected by a bug in ionCube Loader for PHP 5.3 that causes our template layout parsing to fail. Please update to a version later than ionCube Loader 4.0 (your server is %s) before using %s.');
-		$message	= sprintf($message, ioncube_loader_version(), $extension_name);
-		$condition	= $user->authorize( 'com_config', 'manage' );
-		//Don't return this one, in case the site still works with ionCube loader present
-		$notify($condition, $message);
-	}
-}
-
-
 // Check if Koowa is active
 if(JFactory::getApplication()->getCfg('dbtype') != 'mysqli')
 {
@@ -92,12 +49,12 @@ if(JFactory::getApplication()->getCfg('dbtype') != 'mysqli')
 
 if(!JPluginHelper::isEnabled('system', 'koowa') || JFactory::getApplication()->get('wrong_koowa_plugin_order'))
 {
-	require $root.'setup/koowa.'.$ver.'.php';
+	require $root.'setup/koowa.php';
 }
 
-if(!JPluginHelper::isEnabled('system', 'ninja') || JFactory::getApplication()->get('wrong_koowa_plugin_order'))
+if(!JPluginHelper::isEnabled('system', 'ninja'))
 {
-	require $root.'setup/ninja.'.$ver.'.php';
+	require $root.'setup/ninja.php';
 }
 
 

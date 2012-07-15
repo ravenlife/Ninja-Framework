@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<install version="1.5" type="plugin" group="system">
+<install version="1.5" type="plugin" group="system" method="upgrade">
     <name>System - Koowa</name>
     <author>Johan Janssens</author>
     <creationDate>February 2008</creationDate>
@@ -14,19 +14,6 @@
     <files folder="plugins/system">
         <filename plugin="koowa">koowa.php</filename>
     </files>
-
-    <!--  Media -->
-    <media destination="lib_koowa" folder="media/lib_koowa">
-        <folder>images</folder>
-        <folder>js</folder>
-        <folder>css</folder>
-    </media>
-
-    <media destination="com_default" folder="media/com_default">
-        <folder>images</folder>
-        <folder>js</folder>
-        <folder>css</folder>
-    </media>
 
     <params>
 		<param name="auth_basic" type="radio" default="0" label="Basic Authentication" description="If yes, basic authentication support will be enabled">
