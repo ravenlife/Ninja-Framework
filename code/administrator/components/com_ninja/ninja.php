@@ -22,31 +22,6 @@ $lang->load('com_ninja', JPATH_ADMINISTRATOR, 'en-GB', true);
 // load the foriegn language file for com_ninja
 $lang->load('com_ninja', JPATH_ADMINISTRATOR, $lang->getDefault(), true);
 
-
-$root	= JPATH_ROOT.'/administrator/components/com_ninja/';
-$ver	= new JVersion;
-$ver	= $ver->getShortVersion();
-$ver	= explode('.', $ver);
-$ver	= $ver[0].'.'.$ver[1];
-
-// Check if Koowa is active
-if(JFactory::getApplication()->getCfg('dbtype') != 'mysqli')
-{
-		$conf = JFactory::getConfig();
-		$path = JPATH_CONFIGURATION.DS.'configuration.php';
-		if(JFile::exists($path)) {
-			JPath::setPermissions($path, '0644');
-			$search  = JFile::read($path);
-			$replace = str_replace('var $dbtype = \'mysql\';', 'var $dbtype = \'mysqli\';', $search);
-			JFile::write($path, $replace);
-			JPath::setPermissions($path, '0444');
-		}
-		$uri = clone JFactory::getURI();
-		$msg = $user->authorize('com_config', 'manage') ? JText::_('Database configuration setting changed to \'mysqli\'.') : false;
-		
-		return JFactory::getApplication()->redirect($uri->toString(), $msg);
-}
-
 if(!JPluginHelper::isEnabled('system', 'koowa') || JFactory::getApplication()->get('wrong_koowa_plugin_order'))
 {
 	require $root.'setup/koowa.php';

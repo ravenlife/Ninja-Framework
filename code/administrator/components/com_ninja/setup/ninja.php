@@ -19,7 +19,7 @@ if(JFile::exists(JPATH_PLUGINS.'/system/ninja.php') || JFile::exists(JPATH_PLUGI
 		$db->query();
 		$link = '';
 	} else {
-		$db->setQuery("UPDATE `#__plugins` SET `enabled` = '1', `ordering` = '1' WHERE folder = 'system' AND element = 'ninja';");
+		$db->setQuery("UPDATE `#__plugins` SET `published` = '1', `ordering` = '1' WHERE folder = 'system' AND element = 'ninja';");
 		$db->query();
 	}
 

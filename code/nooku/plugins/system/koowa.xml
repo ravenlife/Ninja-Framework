@@ -11,7 +11,7 @@
     <description>Rapid Extension Development framework. Please check if you have PHP 5.2+ before publishing this plugin.</description>
 
     <!--  Files -->
-    <files folder="plugins/system">
+    <files>
         <filename plugin="koowa">koowa.php</filename>
     </files>
 

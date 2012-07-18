@@ -18,7 +18,7 @@ if(JFile::exists(JPATH_PLUGINS.'/system/koowa/koowa.php') || JFile::exists(JPATH
 		$db->query();
 		$link = '';
 	} else {
-		$db->setQuery("UPDATE `#__plugins` SET `enabled` = '1', `ordering` = '1' WHERE folder = 'system' AND element = 'koowa';");
+		$db->setQuery("UPDATE `#__plugins` SET `published` = '1', `ordering` = '1' WHERE folder = 'system' AND element = 'koowa';");
 		$db->query();
 	}
 	
