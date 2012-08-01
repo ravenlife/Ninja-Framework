@@ -48,7 +48,7 @@ class plgSystemNinja extends JPlugin
         KServiceIdentifier::addLocator(new NinjaServiceLocator());
 
         // Override JModuleHelper if we're on Joomla! 1.6 or later
-        if(JVersion::isCompatible('1.6.0'))
+        if(version_compare(JVERSION,'1.6.0','ge'))
         {
             $override = JPATH_ADMINISTRATOR.'/components/com_ninja/overrides/modulehelper.php';
             //if(file_exists($override)) require_once $override;

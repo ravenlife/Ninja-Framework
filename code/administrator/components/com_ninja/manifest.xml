@@ -8,8 +8,6 @@
 	<copyright>(C) 2009-2010 Ninja Media Group. All rights reserved.</copyright>
 	<license>GNU GPLv3</license>
 	<version>2.0.0</version>
-	<revision>$Rev: 1435 $</revision>
-	<koowa>3707</koowa>
 	<description>NinjaForge API Library</description>
 
 	<!-- Admin Files Copy Section -->

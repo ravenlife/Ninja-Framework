@@ -165,9 +165,13 @@ class NinjaViewUserMixin extends KMixinAbstract implements KObjectServiceable
 		JFactory::getDocument()->setTitle( $title );
 
 		// Get the return URL
-		if (!$url = JRequest::getVar('return', '', 'method', 'base64')) {
-			$url = base64_encode($params->get('login'));
+		if (!$url) {
+			$url = $params->get('login');
 		}
+
+		// Joomla 2.5 uses a parameter
+		$params->def('login_redirect_url', $url);
+		$params->def('logout_redirect_url', $url);
 
 		//$this->assign('image' , $image);
 		$this->assign('type'  , $type);
@@ -176,9 +180,10 @@ class NinjaViewUserMixin extends KMixinAbstract implements KObjectServiceable
 		$this->assign('params', $params);
 		
 		$this->getTemplate()->set(array(
+			'pageclass_sfx' => $params->get('pageclass_sfx'),
 			'image'		=> '',
 			'type'		=> $type,
-			'return'	=> $url,
+			'return'	=> base64_encode($url),
 			'params'	=> $params,
 			'form'		=> $form
 		))->mixin($this->getService('ninja:template.mixin'));
