@@ -212,19 +212,17 @@ class NinjaControllerDefault extends ComDefaultControllerDefault
 	 */
 	public function setMessage(KCommandContext $context)
 	{
-		$defaults = array('url' => null, 'message' => null);
-		$redirect = array_merge($defaults, $this->getRedirect());
+		$defaults 	= array('url' => null, 'message' => null);
+		$redirect 	= array_merge($defaults, $this->getRedirect());
+		$identifier = $this->getIdentifier();
+		$inflector  = $this->getService('ninja:template.helper.inflector');
+		$action		= KRequest::get('post.action', 'cmd', $context->action);
+
 		if(!$redirect['message'])
 		{
-			$message = new KObject;
-			$message->count = count((array) KRequest::get('post.id', 'int', 1));
-			$message->action=  ' ' . $this->getService('ninja:template.helper.inflector')->verbalize(KRequest::get('post.action', 'cmd', $context->action)) . '.';
-			$message->name	= $this->getService($this->getModel())->getIdentifier()->name;
-
-			$message->singular = KInflector::humanize(KInflector::singularize($message->name)) . $message->action;
-			$message->plural   = KInflector::humanize(KInflector::pluralize($message->name)) . $message->action;
+			$message = $identifier->type.'_'.$identifier->package.'_'.KInflector::humanize(KInflector::singularize($identifier->name)).'_'.$inflector->verbalize($action);
 			
-			$redirect['message'] = sprintf(JText::_($message->count > 1 ? '%s ' . $message->plural : $message->singular), $message->count);
+			$redirect['message'] = sprintf(JText::_($message), count((array) KRequest::get('post.id', 'int', 1)));
 			$this->_redirect_message = $redirect['message'];
 		}
 	}

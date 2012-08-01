@@ -121,7 +121,7 @@ class NinjaTemplateHelperDate extends KTemplateHelperAbstract
 		
 		$config->append(array(
 			'date'			=> null,
-			'format'		=> JText::_('DATE_FORMAT_LC2'),
+			'format'		=> '%A, %d %B %Y %H:%M',
 			'gmt_offset'	=> JFactory::getUser()->getParameters()->get('timezone', JFactory::getConfig()->getValue('offset')),
 		));
 

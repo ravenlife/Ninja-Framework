@@ -13,7 +13,7 @@
 			if(target.retrieve('busy')) return;
 			if(target.hasClass('toggle-state'))
 			{
-				var options = target.retrieve('options') || Json.evaluate(target.get('rel')),
+				var options = target.retrieve('options') || JSON.decode(target.get('rel')),
 					toggle  = options[options.toggle],
 					data	= {
 						action: 'edit',
